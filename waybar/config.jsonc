@@ -1,0 +1,119 @@
+{
+  "position": "top",
+  "layer": "top",
+  "output": "HDMI-A-1",
+  "height": 45,
+  "margin-top": 7,
+  "margin-bottom": -7,
+  "margin-left": 1,
+  "margin-right": 1,
+  "modules-left": [
+    "custom/launcher",
+    "custom/code",
+    "custom/playerctl",
+    "custom/playerlabel"
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["tray", "memory", "cpu", "pulseaudio", "clock"],
+  // Modules configuration
+  "clock": {
+    "format": "<span foreground='#6D8895' font='14.5' rise='-1000'> </span>{:%H:%M}",
+    "format-alt": "<span foreground='#6D8895' font='14.5' rise='-1000'> </span>{:%A %B %Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ffffff'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#66FBFF'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "sort-by-number": true
+    }
+  },
+  "custom/playerctl": {
+    "format": "{icon}",
+    "return-type": "json",
+    "max-length": 36,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause",
+    "format-icons": {
+      "Playing": "<span foreground='#fff' font='14' rise='-1000'>󰏥</span>",
+      "Paused": "<span foreground='#928374' font='14' rise='-1000'>󰐌</span>"
+    }
+  },
+  "custom/playerlabel": {
+    "format": "<span>{}</span>",
+    "return-type": "json",
+    "max-length": 36,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "format-icons": {
+      "Playing": "<span foreground='#fff' font='14' rise='-1000'>󰏥</span>",
+      "Paused": "<span foreground='#928374' font='14' rise='-1000'>󰐌</span>"
+    }
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10
+  },
+  "pulseaudio": {
+    "format": "<span foreground='#6C77BB' font='14.5' rise='-1000'>{icon}</span> {volume}%",
+    "format-muted": "<span font='14.5' rise='-1000'>󰝟 </span>Mute",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "bash ~/.config/scripts/volume mute",
+    "on-scroll-up": "bash ~/.config/scripts/volume up",
+    "on-scroll-down": "bash ~/.config/scripts/volume down",
+    "scroll-step": 5,
+    "on-click-right": "pavucontrol"
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/launcher": {
+    "format": "<span foreground='#00FFFF' font='20' rise='-1000'></span>",
+    "on-click": "bash $HOME/.config/rofi/powermenu/powermenu"
+  },
+  "custom/code": {
+    "format": "<span foreground='#ebdbb2' font='15' rise='-1000'> </span>",
+    "on-click": "nemo /home",
+    "on-click-right": "nemo /home"
+  }
+}

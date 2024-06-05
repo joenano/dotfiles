@@ -1,0 +1,54 @@
+
+mpd_music_dir = "~/music" 
+ncmpcpp_directory  = ~/.config/ncmpcpp
+mpd_host = "localhost"
+mpd_port = "6600"  
+mpd_connection_timeout = "5"  
+mpd_crossfade_time = "5"
+
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = yes
+visualizer_type = spectrum
+visualizer_spectrum_smooth_look = no
+visualizer_color = cyan, green, magenta
+
+#visualizer_look = "█┇"
+#visualizer_look = "+|"
+visualizer_look = "▋☰"
+
+progressbar_look = "___"
+
+song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
+song_status_format = {{%a - }{%t}}|{%f}
+song_library_format = {%t}|{%f}
+song_columns_list_format = (20)[green]{a} (50)[white]{t:Title} (20)[cyan]{b} (7f)[magenta]{l}
+
+search_engine_default_search_mode = 2
+seek_time = 4
+volume_change_step = 4
+allow_for_physical_item_deletion = yes
+startup_screen = playlist
+external_editor = nvim
+header_visibility = no
+
+##### colors definitions #####
+colors_enabled = yes
+empty_tag_color = cyan
+
+header_window_color = default
+volume_color = black
+state_line_color = black
+state_flags_color = black
+main_window_color = blue
+progressbar_color = black 
+progressbar_elapsed_color = magenta
+statusbar_color = black
+
+now_playing_prefix = $b$i
+now_playing_suffix = $/i$/b
+
+current_item_prefix = $(magenta)$r
+current_item_suffix = $/r$(end)
+
+

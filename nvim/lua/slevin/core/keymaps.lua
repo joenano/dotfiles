@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>NvimTreeClose|x<cr>", { desc = "Save and 
 -- buffers
 vim.keymap.set("n", "<tab>", "<cmd>bn<cr>")
 vim.keymap.set("n", "<S-tab>", "<cmd>bp<cr>")
-vim.keymap.set("n", "<leader>d", ":bdelete<CR>:bnext<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>b", ":bdelete<CR>:bnext<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Write buffer" })
 
 -- file tree
@@ -26,10 +26,10 @@ vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-/>", "gcc<Esc>", { remap = true })
 
 -- lines
-vim.keymap.set("n", "<C-S-Down>", "yyp", { remap = true })
-vim.keymap.set("n", "<C-S-up>", "yyp", { remap = true })
-vim.keymap.set("i", "<C-S-Down>", "yyp", { remap = true })
-vim.keymap.set("i", "<C-S-up>", "yyp", { remap = true })
+vim.keymap.set("n", "<C-A-Down>", "yyp", { remap = true })
+vim.keymap.set("n", "<C-A-up>", "yyp", { remap = true })
+vim.keymap.set("i", "<C-A-Down>", "yyp", { remap = true })
+vim.keymap.set("i", "<C-A-up>", "yyp", { remap = true })
 
 -- commands
 vim.keymap.set("n", ";", ":", { remap = true })
@@ -47,8 +47,8 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 -- arrow moving
 vim.keymap.set("n", "<C-Right>", "e")
 vim.keymap.set("v", "<C-Right>", "e")
-vim.keymap.set("v", "<C-Left>", "b")
 vim.keymap.set("n", "<C-Left>", "b")
+vim.keymap.set("v", "<C-Left>", "b")
 
 -- moving lines
 vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { silent = true })
@@ -66,10 +66,9 @@ vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { desc = "Sh
 vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { desc = "Show LSP type definitions" }) -- show lsp type definitions
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "See available code actions" }) -- see available code actions, in visual mode will apply to selection
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Smart rename" }) -- smart rename
-vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
+vim.keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
+vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics<CR>", { desc = "Show buffer diagnostics" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentation for what is under cursor" })
 
 -- leap: search both ways
